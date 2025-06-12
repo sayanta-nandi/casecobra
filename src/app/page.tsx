@@ -5,6 +5,7 @@ import { buttonVariants } from "../components/ui/button";
 import { ArrowRight, Check, Image } from "lucide-react";
 import Link from "next/link";
 import Phone from "@/components/Phone";
+import Reviews from "@/components/Reviews";
 
 export default function Home() {
   return (
@@ -167,6 +168,9 @@ export default function Home() {
                 I dig it."
               </p>
             </div>
+          </div>
+          <div className="mt-36">
+            <Reviews />
           </div>
         </MaxWidthWrapper>
       </section>

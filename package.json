@@ -23,6 +23,7 @@
     "express": "^4.21.2",
     "firebase": "^11.1.0",
     "firebase-admin": "^13.0.2",
+    "framer-motion": "^12.17.0",
     "lucide-react": "^0.464.0",
     "next": "^15",
     "prisma": "^6.1.0",
