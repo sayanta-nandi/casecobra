@@ -9,16 +9,31 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.9.6",
+    "@edgestore/react": "^0.2.2",
+    "@edgestore/server": "^0.2.2",
     "@kinde-oss/kinde-auth-nextjs": "^2.4.6",
+    "@prisma/client": "^6.1.0",
+    "@radix-ui/react-progress": "^1.1.1",
     "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-toast": "^1.2.4",
+    "@uploadthing/react": "^7.1.5",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "express": "^4.21.2",
+    "firebase": "^11.1.0",
+    "firebase-admin": "^13.0.2",
     "lucide-react": "^0.464.0",
-    "next": "15.0.3",
+    "next": "^15",
+    "prisma": "^6.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-dropzone": "^14.3.5",
+    "sharp": "^0.32.6",
     "tailwind-merge": "^2.5.5",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "uploadthing": "^7.4.4",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@types/node": "^20",

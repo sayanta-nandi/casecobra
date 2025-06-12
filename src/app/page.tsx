@@ -1,105 +1,113 @@
 import FiveStar from "@/components/FiveStar";
+import Heading from "@/components/Heading";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import { Check, Image } from "lucide-react";
+import { buttonVariants } from "../components/ui/button";
+import { ArrowRight, Check, Image } from "lucide-react";
+import Link from "next/link";
+import Phone from "@/components/Phone";
 
 export default function Home() {
   return (
-    <div className="bg-slate-50">
-      <section>
+    <div>
+      {/* top section */}
+      <section className="bg-slate-50">
         <MaxWidthWrapper
-          className="pb-32 px-20 pt-10 lg:pb-52 lg:pt-24 xl:pt-32
-      lg:gap-x-0 xl:gap-x-8"
+          className="pb-32 px-20 pt-10
+      lg:gap-x-0 xl:gap-x-8 text-lg"
         >
-          <div
-            className="relative mx-auto col-span-2 flex flex-col items-center
+          <div className="flex flex-col gap-4 items-center pt-10 lg:flex-row lg:justify-between">
+            <div>
+              <div
+                className="relative mx-auto col-span-2 flex flex-col items-center
           text-center w-full gap-4"
-          >
-            <h1
-              className="relative text-5xl text-balance tracking-tighter 
-             font-bold !leading-tight w-full
-            "
-            >
-              {" "}
-              Your Image on a{" "}
-              <span
-                className="bg-green-600
+              >
+                <Heading>
+                  {" "}
+                  Your Image on a{" "}
+                  <span
+                    className="bg-green-600
               px-2 text-white rounded"
-              >
-                Custom
-              </span>{" "}
-              Phone Case
-            </h1>
-            <p className="text-balance">
-              Capture your favorite memories with your own,{" "}
-              <span
-                className="font-bold
+                  >
+                    Custom
+                  </span>{" "}
+                  Phone Case
+                </Heading>
+                <p className="text-balance">
+                  Capture your favorite memories with your own,{" "}
+                  <span
+                    className="font-bold
               "
-              >
-                one-of-one
-              </span>{" "}
-              phone case. CaseCobra allows you to protect your memories, not
-              just your phone case.
-            </p>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="flex flex-col items-start pt-5 gap-1">
-              <div className="flex gap-2">
-                <Check className="text-green-500" />
-                <p>High-quality, durable material</p>
+                  >
+                    one-of-one
+                  </span>{" "}
+                  phone case. CaseCobra allows you to protect your memories, not
+                  just your phone case.
+                </p>
               </div>
-              <div className="flex gap-2">
-                <Check className="text-green-500" />
-                <p>5 year print guarantee</p>
+              <div className="flex flex-col items-center pt-10">
+                <div className="flex flex-col items-start pt-5 gap-1">
+                  <div className="flex gap-2">
+                    <Check className="text-green-500" />
+                    <p>High-quality, durable material</p>
+                  </div>
+                  <div className="flex gap-2">
+                    <Check className="text-green-500" />
+                    <p>5 year print guarantee</p>
+                  </div>
+                  <div className="flex gap-2">
+                    <Check className="text-green-500" />
+                    <p>Modern iPhone models supported</p>
+                  </div>
+                </div>
               </div>
-              <div className="flex gap-2">
-                <Check className="text-green-500" />
-                <p>Modern iPhone models supported</p>
+              <div className="flex justify-center -space-x-3 select-none pt-10">
+                <img
+                  src="customer1.png"
+                  className="relative rounded-full size-14 ring-2 ring-slate-100
+                object-cover"
+                />
+                <img
+                  src="customer2.png"
+                  className="relative rounded-full size-14 ring-2 ring-slate-100
+                object-cover"
+                />
+                <img
+                  src="customer3.png"
+                  className="relative rounded-full size-14 ring-2 ring-slate-100
+                object-cover"
+                />
+                <img
+                  src="customer4.png"
+                  className="relative rounded-full size-14 ring-2 ring-slate-100
+                object-cover"
+                />
+                <img
+                  src="happy4.jpg"
+                  className="relative rounded-full size-14 ring-2 ring-slate-100
+                object-cover"
+                />
+              </div>
+              <div className="pt-5 flex flex-col items-center">
+                <FiveStar />
+                <p>
+                  <span className="font-semibold">1,250+</span> happy customers
+                </p>
               </div>
             </div>
-          </div>
-          <div className="flex flex-col gap-4 items-center pt-10">
-            <div className="flex justify-center -space-x-3 select-none">
-              <img
-                src="happy1.avif"
-                className="relative rounded-full size-14 ring-2 ring-slate-100
-                object-cover"
-              />
-              <img
-                src="happy2.jpg"
-                className="relative rounded-full size-14 ring-2 ring-slate-100
-                object-cover"
-              />
-              <img
-                src="happy3.jpg"
-                className="relative rounded-full size-14 ring-2 ring-slate-100
-                object-cover"
-              />
-              <img
-                src="happy4.jpg"
-                className="relative rounded-full size-14 ring-2 ring-slate-100
-                object-cover"
-              />
-              <img
-                src="happy5.jpg"
-                className="relative rounded-full size-14 ring-2 ring-slate-100
-                object-cover"
-              />
-            </div>
-            <div className="flex flex-col items-center">
-              <FiveStar />
-              <p>
-                <span className="font-semibold">1,250+</span> happy customers
-              </p>
+            <div className="pt-16 lg:py-5 lg:right-0">
+              <Phone imgScr="doggy1.jpeg" className="w-64" />
             </div>
           </div>
-          <div className="pt-10">
-            <Image />
-          </div>
-          <div className="w-90 h-[1000px] bg-green-600"></div>
-          <div className="pt-16 flex flex-col items-center md:flex-row md:gap-4">
-            <p className="font-bold text-5xl text-center order-2">
-              What Our Customers think?
-            </p>
+        </MaxWidthWrapper>
+      </section>
+      {/* middle section */}
+      <section className="bg-slate-200">
+        <MaxWidthWrapper
+          className="pb-32 px-20 pt-10
+      lg:gap-x-0 xl:gap-x-8 text-lg"
+        >
+          <div className="flex flex-col items-center justify-center md:flex-row md:gap-4">
+            <Heading className="order-2">What our Customers think?</Heading>
             <img
               src="butterfly.png"
               className="bg-inherit size-44 order-1 md:order-3"
@@ -109,13 +117,13 @@ export default function Home() {
             <div className="flex flex-col items-start gap-2">
               <div className="flex items-center gap-3">
                 <img
-                  src="happy3.jpg"
+                  src="customer3.png"
                   className="relative rounded-full size-14 ring-2 ring-slate-100
                 object-cover"
                 />
                 <div className="flex flex-col items-start">
                   <p className="font-semibold text-lg">Laura</p>
-                  <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-1 text-sm">
                     <Check className="text-green-600" />
                     Verified Purchase
                   </div>
@@ -141,7 +149,7 @@ export default function Home() {
                 />
                 <div className="flex flex-col items-start">
                   <p className="font-semibold text-lg">Peter</p>
-                  <div className="flex items-center gap-1">
+                  <div className="text-sm flex items-center gap-1">
                     <Check className="text-green-600" />
                     Verified Purchase
                   </div>
@@ -159,6 +167,61 @@ export default function Home() {
                 I dig it."
               </p>
             </div>
+          </div>
+        </MaxWidthWrapper>
+      </section>
+      {/* bottom section */}
+      <section>
+        <MaxWidthWrapper
+          className="pb-32 px-20 pt-10
+      lg:gap-x-0 xl:gap-x-8 text-lg"
+        >
+          <Heading className="pt-16 leading-[70px]">
+            Upload your photo and{" "}
+            <span className="rounded-lg bg-green-600 text-white px-2">
+              and get your own case
+            </span>{" "}
+            now
+          </Heading>
+          <div className="flex flex-col items-center pt-20 lg:flex-row justify-center transition-all w-full h-fit gap-16 lg:gap-1">
+            <img src="girl1-blue.jpeg" className=" rounded max-w-96" />
+            <img
+              src="arrow.png"
+              className="rotate-90 lg:rotate-0 transition-all"
+            />
+            <Phone className="w-64" imgScr="girl1-blue.jpeg" />
+          </div>
+          <div className="flex flex-col items-center pt-16">
+            <div className="flex flex-col items-start gap-1 text-lg">
+              <div className="flex gap-2">
+                <Check className="text-green-500" />
+                <p>High-quality silicone material</p>
+              </div>
+              <div className="flex gap-2">
+                <Check className="text-green-500" />
+                <p>Scratch- and fingerprint resistant coating</p>
+              </div>
+              <div className="flex gap-2">
+                <Check className="text-green-500" />
+                <p>Wireless charging compatible</p>
+              </div>
+              <div className="flex gap-2">
+                <Check className="text-green-500" />
+                <p>5 year print warranty</p>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-center pt-16">
+            <Link
+              href="/configure/upload"
+              className={buttonVariants({
+                size: "lg",
+                className: "flex",
+              })}
+            >
+              Create your case now
+              <ArrowRight />
+            </Link>
           </div>
         </MaxWidthWrapper>
       </section>
