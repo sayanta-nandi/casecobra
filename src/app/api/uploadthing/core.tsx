@@ -30,32 +30,32 @@ export const ourFileRouter = {
       // Whatever is returned here is accessible in onUploadComplete as `metadata`
       return { input };
     })
-    .onUploadComplete(async ({ metadata, file }) => {
+    .onUploadComplete(async ({ metadata }) => {
       // This code RUNS ON YOUR SERVER after upload
       const { configId } = metadata.input;
-      const res = await fetch(file.url);
-      const buffer = await res.arrayBuffer();
+      // const res = await fetch(file.url);
+      // const buffer = await res.arrayBuffer();
 
-      const imgMetadata = await sharp(buffer).metadata();
+      // const imgMetadata = await sharp(buffer).metadata();
 
-      const { width, height } = imgMetadata;
+      // const { width, height } = imgMetadata;
 
-      if (!configId) {
-        const configuration = await createNewImage({
-          croppedImageUrl: file.url,
-          height: height || 500,
-          width: width || 500,
-          imageUrl: file.url,
-        });
-        return { configId: configuration.imageId };
-      } else {
-        await updateImage({
-          imageId: configId,
-          croppedImageUrl: file.url,
-        });
-      }
+      // if (!configId) {
+      //   const configuration = await createNewImage({
+      //     croppedImageUrl: file.url,
+      //     height: height || 500,
+      //     width: width || 500,
+      //     imageUrl: file.url,
+      //   });
+      //   return { configId: configuration.imageId };
+      // } else {
+      //   await updateImage({
+      //     imageId: configId,
+      //     croppedImageUrl: file.url,
+      //   });
+      // }
 
-      console.log("file url", file.url);
+      // console.log("file url", file.url);
 
       // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
       return { configId };
