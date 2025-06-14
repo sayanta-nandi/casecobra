@@ -23,12 +23,13 @@ const STEPS = [
 
 const Steps = () => {
   const pathname = usePathname();
+  console.log("Current pathname:", pathname);
   return (
     <ol className="flex flex-col sm:flex-row justify-center">
       {STEPS.map((step, i) => {
         const isCurrent = pathname.endsWith(step.url);
         const isCompleted = STEPS.slice(i + 1).some((step) => {
-          pathname.endsWith(step.url);
+          return pathname.endsWith(step.url);
         });
         return (
           <li
