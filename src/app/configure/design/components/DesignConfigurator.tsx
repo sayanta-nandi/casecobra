@@ -12,7 +12,7 @@ import { Radio, RadioGroup } from "@headlessui/react";
 import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import { ArrowRight, Check, ChevronsDownUp } from "lucide-react";
 import NextImage from "next/image";
-import { useRef, useState } from "react";
+import { useRef, useState, useTransition } from "react";
 import { Rnd } from "react-rnd";
 import {
   COLORS,
@@ -29,6 +29,7 @@ import { useMutation } from "@tanstack/react-query";
 import { saveConfig as _saveConfig, saveConfigProps } from "../action/actions";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import Loader from "@/components/Loader";
 
 const DesignConfigurator = ({
   configId,
@@ -40,7 +41,8 @@ const DesignConfigurator = ({
   dimensions: { width: number; height: number };
 }) => {
   const router = useRouter();
-  const { mutate: saveConfig } = useMutation({
+  const [isPen, startTransition] = useTransition();
+  const { mutate: saveConfig, isPending } = useMutation({
     mutationKey: ["save-config"],
     mutationFn: async (props: saveConfigProps) => {
       console.log(props);
@@ -50,7 +52,7 @@ const DesignConfigurator = ({
       toast.error("Something went wrong");
     },
     onSuccess: () => {
-      router.push(`/configure/preview?id=${configId}`);
+      startTransition(() => router.push(`/configure/preview?id=${configId}`));
     },
   });
 
@@ -66,8 +68,8 @@ const DesignConfigurator = ({
     finish: FINISHES.options[0],
   });
   const [renderedDimensions, setRenderedDimensions] = useState({
-    width: width,
-    height: height,
+    width: width / 4,
+    height: height / 4,
   });
   const [renderedPositions, setRenderedPositions] = useState({
     x: 150,
@@ -133,6 +135,7 @@ const DesignConfigurator = ({
     const byteArray = new Uint8Array(byteNumbers);
     return new Blob([byteArray], { type: mimeType });
   }
+  if (isPending || isPen) return <Loader />;
   return (
     <div className="relative grid grid-cols-1 lg:grid-cols-3 gap-6 my-20">
       <div
