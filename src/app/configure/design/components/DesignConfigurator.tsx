@@ -135,7 +135,7 @@ const DesignConfigurator = ({
     const byteArray = new Uint8Array(byteNumbers);
     return new Blob([byteArray], { type: mimeType });
   }
-  if (isPending || isPen) return <Loader />;
+  if (isPen) return <Loader />;
   return (
     <div className="relative grid grid-cols-1 lg:grid-cols-3 gap-6 my-20">
       <div
@@ -191,7 +191,7 @@ const DesignConfigurator = ({
             aria-hidden="true"
             className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white"
           />
-          <div className="px-8 pb-32">
+          <div className="px-8 pb-32 pt-8">
             <h2 className="tracking-tight text-3xl font-semibold">
               Customize Case
             </h2>
@@ -306,6 +306,8 @@ const DesignConfigurator = ({
               )}
             </p>
             <Button
+              disabled={isPending}
+              isLoading={isPending}
               onClick={() =>
                 saveConfig({
                   color: option.color.value,

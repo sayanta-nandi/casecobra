@@ -29,10 +29,15 @@ export default withUt({
           from: { opacity: "0" },
           to: { opacity: "1" },
         },
+        flashing: {
+          "0%, 100%": { opacity: "0.2" },
+          "20%": { opacity: "1" },
+        },
       },
       animation: {
         marquee: "marquee var(--marquee-duration) linear infinite",
         "fade-in": "fade-in 1s ease-in-out forwards",
+        flashing: "flashing 1.5s linear infinite",
       },
       colors: {
         background: "hsl(var(--background))",

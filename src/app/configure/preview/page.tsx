@@ -1,6 +1,7 @@
 import Phone from "@/components/Phone";
 import { prisma } from "@/utils/client";
 import { notFound } from "next/navigation";
+import SummaryDesign from "./components/SummaryDesign";
 
 interface PageProps {
   searchParams: {
@@ -20,15 +21,6 @@ const Page = async ({ searchParams }: PageProps) => {
 
   if (!config) return notFound();
 
-  return (
-    <div>
-      <Phone imgScr={config.croppedImageUrl!} className="w-64" />
-      <p>image: {config.croppedImageUrl}</p>
-      <p>color: {config.color}</p>
-      <p>material: {config.material}</p>
-      <p>finish: {config.finish}</p>
-      <p>model: {config.model}</p>
-    </div>
-  );
+  return <SummaryDesign config={config} />;
 };
 export default Page;
