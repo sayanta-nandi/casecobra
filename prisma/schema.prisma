@@ -14,18 +14,45 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Configarator {
-  id              String  @id @default(cuid())
-  height          Int
-  width           Int
-  imageUrl        String
-  croppedImageUrl String?
+enum OrderStatus {
+  fulfilled
+  shipped
+  awaiting_shipment
 }
 
-model Hiiiiii {
-  id          String   @id @default(cuid())
-  name        String
-  description String?
-  imageUrl    String
-  createdAt   DateTime @default(now())
+enum PhoneModel {
+  iphonex
+  iphone11
+  iphone12
+  iphone13
+  iphone14
+  iphone15
+}
+
+enum CaseMaterial {
+  silicone
+  polycarbonate
+}
+
+enum CaseFinish {
+  smooth
+  textured
+}
+
+enum CaseColor {
+  black
+  blue
+  rose
+}
+
+model Configarator {
+  id              String        @id @default(cuid())
+  height          Int
+  width           Int
+  model           PhoneModel?
+  material        CaseMaterial?
+  color           CaseColor?
+  finish          CaseFinish?
+  imageUrl        String
+  croppedImageUrl String?
 }

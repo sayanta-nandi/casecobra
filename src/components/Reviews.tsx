@@ -6,18 +6,18 @@ import { useInView } from "framer-motion";
 import Phone from "./Phone";
 
 const PHONES = [
-  "reviews/review1.png",
-  "reviews/review2.png",
-  "reviews/review3.png",
-  "reviews/review4.png",
-  "reviews/review5.png",
-  "reviews/review6.png",
-  "reviews/review7.png",
-  "reviews/review8.png",
-  "reviews/review9.png",
-  "reviews/review10.png",
-  "reviews/review11.png",
-  "reviews/review12.png",
+  "/reviews/review1.png",
+  "/reviews/review2.png",
+  "/reviews/review3.png",
+  "/reviews/review4.png",
+  "/reviews/review5.png",
+  "/reviews/review6.png",
+  "/reviews/review7.png",
+  "/reviews/review8.png",
+  "/reviews/review9.png",
+  "/reviews/review10.png",
+  "/reviews/review11.png",
+  "/reviews/review12.png",
 ];
 
 const splitColumns = (
