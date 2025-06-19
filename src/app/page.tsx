@@ -96,7 +96,7 @@ export default function Home() {
               </div>
             </div>
             <div className="pt-16 lg:py-5 lg:right-0">
-              <Phone imgScr="doggy1.jpeg" className="w-64" />
+              <Phone imgScr="/doggy1.jpeg" className="w-64" />
             </div>
           </div>
         </MaxWidthWrapper>
@@ -193,7 +193,7 @@ export default function Home() {
               src="arrow.png"
               className="rotate-90 lg:rotate-0 transition-all"
             />
-            <Phone className="w-64" imgScr="girl1-blue.jpeg" />
+            <Phone className="w-64" imgScr="/girl1-blue.jpeg" />
           </div>
           <div className="flex flex-col items-center pt-16">
             <div className="flex flex-col items-start gap-1 text-lg">

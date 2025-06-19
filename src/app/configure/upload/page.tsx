@@ -52,6 +52,7 @@ export default function Page() {
   return (
     <div className="flex flex-1 h-full w-full md:px-12 md:py-12 lg:px-24 xl:px-36">
       <Dropzone
+        disabled={isUploading || isPending}
         onDropAccepted={onAcceptedFiles}
         onDropRejected={onDropRejected}
         onDragEnter={() => setIsDragOver(true)}

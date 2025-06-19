@@ -3,6 +3,7 @@ import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { z } from "zod";
 import sharp from "sharp";
 import { createNewImage, updateImage } from "@/actions/action";
+import { prisma } from "@/utils/client";
 
 const f = createUploadthing();
 
@@ -30,35 +31,36 @@ export const ourFileRouter = {
       // Whatever is returned here is accessible in onUploadComplete as `metadata`
       return { input };
     })
-    .onUploadComplete(async ({ metadata }) => {
+    .onUploadComplete(async ({ metadata, file }) => {
       // This code RUNS ON YOUR SERVER after upload
       const { configId } = metadata.input;
-      // const res = await fetch(file.url);
-      // const buffer = await res.arrayBuffer();
+      const res = await fetch(file.url);
+      const buffer = await res.arrayBuffer();
 
-      // const imgMetadata = await sharp(buffer).metadata();
+      const imgMetadata = await sharp(buffer).metadata();
 
-      // const { width, height } = imgMetadata;
+      console.log("imgMetadata", imgMetadata);
+      console.log("file url", file.url);
 
-      // if (!configId) {
-      //   const configuration = await createNewImage({
-      //     croppedImageUrl: file.url,
-      //     height: height || 500,
-      //     width: width || 500,
-      //     imageUrl: file.url,
-      //   });
-      //   return { configId: configuration.imageId };
-      // } else {
-      //   await updateImage({
-      //     imageId: configId,
-      //     croppedImageUrl: file.url,
-      //   });
-      // }
+      const { width, height } = imgMetadata;
 
-      // console.log("file url", file.url);
-
+      if (!configId) {
+        const config = await prisma.configarator.create({
+          data: {
+            width: width || 500,
+            height: height || 500,
+            imageUrl: file.url,
+          },
+        });
+        return { configId: config.id };
+      } else {
+        const newConfig = await prisma.configarator.update({
+          where: { id: configId },
+          data: { croppedImageUrl: file.url },
+        });
+        return { configId: newConfig.id };
+      }
       // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
-      return { configId };
     }),
 } satisfies FileRouter;
 
