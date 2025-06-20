@@ -1,12 +1,7 @@
 import { prisma } from "@/utils/client";
 import { notFound } from "next/navigation";
 import DesignConfigurator from "./components/DesignConfigurator";
-
-interface PageProps {
-  searchParams: {
-    [key: string]: string | string[] | undefined;
-  };
-}
+import { PageProps } from "@/lib/interfaces";
 
 const Page = async ({ searchParams }: PageProps) => {
   const { id } = await searchParams;

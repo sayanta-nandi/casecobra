@@ -2,12 +2,7 @@ import Phone from "@/components/Phone";
 import { prisma } from "@/utils/client";
 import { notFound } from "next/navigation";
 import SummaryDesign from "./components/SummaryDesign";
-
-interface PageProps {
-  searchParams: {
-    [key: string]: string | string[] | undefined;
-  };
-}
+import { PageProps } from "@/lib/interfaces";
 
 const Page = async ({ searchParams }: PageProps) => {
   const { id } = await searchParams;
