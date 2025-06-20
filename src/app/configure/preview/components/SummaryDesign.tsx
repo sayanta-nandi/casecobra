@@ -16,8 +16,17 @@ import {
   PRODUCT_PRICES,
 } from "../../../../../config/product-price-validator";
 import { Button } from "@/components/ui/button";
+import { createCheckoutSession } from "../actions/action";
+import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+import LoginModal from "@/components/LoginModal";
 
 const SummaryDesign = ({ config }: { config: Configarator }) => {
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const router = useRouter();
+  const { user } = useKindeBrowserClient();
   const [showConfetti, setShowConfetti] = useState(false);
   useEffect(() => setShowConfetti(true));
   const { model, color, material, finish } = config;
@@ -30,6 +39,27 @@ const SummaryDesign = ({ config }: { config: Configarator }) => {
     totalPrice += PRODUCT_PRICES.material.polycarbonate;
   if (finish === "textured") totalPrice += PRODUCT_PRICES.finish.textured;
 
+  const { mutate: createPaymentSession } = useMutation({
+    mutationKey: ["get-checkout-session"],
+    mutationFn: createCheckoutSession,
+    onSuccess: ({ url }) => {
+      if (url) router.push(url);
+      else throw new Error("Unable to retrieve payment URL.");
+    },
+    onError: () => {
+      toast.error("Somthing went wrong!!");
+    },
+  });
+
+  const handleCheckout = () => {
+    if (user) {
+      createPaymentSession({ configId: config.id });
+    } else {
+      localStorage.setItem("configurationId", config.id);
+      setIsLoginModalOpen(true);
+    }
+  };
+
   return (
     <>
       <div
@@ -41,6 +71,9 @@ const SummaryDesign = ({ config }: { config: Configarator }) => {
           config={{ elementCount: 1000, spread: 90 }}
         />
       </div>
+
+      <LoginModal isOpen={isLoginModalOpen} setIsOpen={setIsLoginModalOpen} />
+
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         <div className="flex flex-col md:row-span-3 col-span-1 p-4 sm:col-span-2 justify-center items-center md:col-span-1 space-y-4">
           <Phone imgScr={config.croppedImageUrl!} className={`w-64 bg-${tw}`} />
@@ -95,7 +128,7 @@ const SummaryDesign = ({ config }: { config: Configarator }) => {
             </div>
           </div>
           <div className="pt-4 flex w-full justify-end">
-            <Button>
+            <Button onClick={() => handleCheckout()}>
               Checkout <ArrowRight />
             </Button>
           </div>
