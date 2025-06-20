@@ -13,7 +13,7 @@
     "@edgestore/react": "^0.2.2",
     "@edgestore/server": "^0.2.2",
     "@headlessui/react": "^2.2.4",
-    "@kinde-oss/kinde-auth-nextjs": "^2.4.6",
+    "@kinde-oss/kinde-auth-nextjs": "^2.8.0",
     "@prisma/client": "^6.10.1",
     "@prisma/extension-accelerate": "^2.0.1",
     "@radix-ui/react-aspect-ratio": "^1.1.7",
