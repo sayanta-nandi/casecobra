@@ -42,9 +42,11 @@ const Navbar = () => {
                   </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
-                  <DropdownMenuItem className="cursor-pointer">
-                    <LogoutLink>Logout</LogoutLink>
-                  </DropdownMenuItem>
+                  <LogoutLink>
+                    <DropdownMenuItem className="cursor-pointer">
+                      Logout
+                    </DropdownMenuItem>
+                  </LogoutLink>
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (

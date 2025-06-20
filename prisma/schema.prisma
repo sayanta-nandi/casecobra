@@ -55,4 +55,54 @@ model Configarator {
   finish          CaseFinish?
   imageUrl        String
   croppedImageUrl String?
+  Order           Order[]
+}
+
+model User {
+  id        String   @id
+  email     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Order     Order[]
+}
+
+model Order {
+  id                String           @id @default(cuid())
+  configurator      Configarator     @relation(fields: [configaratorId], references: [id])
+  configaratorId    String
+  price             Float
+  isPaid            Boolean          @default(false)
+  user              User             @relation(fields: [userId], references: [id])
+  userId            String
+  status            OrderStatus      @default(awaiting_shipment)
+  shipping_address  ShippingAddress? @relation(fields: [shippingAddressId], references: [id])
+  shippingAddressId String?
+  billing_address   BillingAddress?  @relation(fields: [billingAddressId], references: [id])
+  billingAddressId  String?
+  createdAt         DateTime         @default(now())
+  updated           DateTime         @updatedAt
+}
+
+model ShippingAddress {
+  id          String  @id @default(cuid())
+  name        String
+  street      String
+  city        String
+  postalCode  String
+  country     String
+  state       String?
+  phoneNumber String?
+  Order       Order[]
+}
+
+model BillingAddress {
+  id          String  @id @default(cuid())
+  name        String
+  street      String
+  city        String
+  postalCode  String
+  country     String
+  state       String?
+  phoneNumber String?
+  Order       Order[]
 }
