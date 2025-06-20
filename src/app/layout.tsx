@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 // import localFont from "next/font/local";
-import "./globals.css";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import "./globals.css";
 // import { Toaster } from "@/components/ui/toaster";
-import { EdgeStoreProvider } from "@/lib/edgestore";
-import { ClerkProvider } from "@clerk/nextjs";
-import { Toaster } from "@/components/ui/sonner";
+import AuthProvider from "@/components/AuthProvider";
 import Provider from "@/components/Provider";
+import { Toaster } from "@/components/ui/sonner";
 import { Recursive } from "next/font/google";
 
 const recursive = Recursive({ subsets: ["latin"] });
@@ -23,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <AuthProvider>
       <html lang="en">
         <body className={recursive.className}>
           <Navbar />
@@ -33,10 +32,9 @@ export default function RootLayout({
             </div>
             <Footer />
           </main>
-
           <Toaster position="bottom-right" />
         </body>
       </html>
-    </ClerkProvider>
+    </AuthProvider>
   );
 }
