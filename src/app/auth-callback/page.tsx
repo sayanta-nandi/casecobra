@@ -7,12 +7,7 @@ import { useEffect, useState } from "react";
 import Loader from "@/components/Loader";
 
 const page = () => {
-  const [configId, setConfigId] = useState<string | null>(null);
   const router = useRouter();
-  useEffect(() => {
-    const id = localStorage.getItem("configurationId");
-    if (id) setConfigId(id);
-  }, []);
 
   const { data } = useQuery({
     queryKey: ["auth-callback"],
@@ -22,9 +17,10 @@ const page = () => {
   });
 
   if (data?.success) {
-    if (configId) {
+    const id = localStorage.getItem("configurationId");
+    if (id) {
       localStorage.removeItem("configurationId");
-      router.push(`/configure/preview?id=${configId}`);
+      router.push(`/configure/preview?id=${id}`);
     } else {
       router.push("/");
     }
