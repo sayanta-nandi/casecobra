@@ -2,10 +2,11 @@ import FiveStar from "@/components/FiveStar";
 import Heading from "@/components/Heading";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { buttonVariants } from "../components/ui/button";
-import { ArrowRight, Check, Image } from "lucide-react";
+import { ArrowRight, Check, Image as LucideImage } from "lucide-react";
 import Link from "next/link";
 import Phone from "@/components/Phone";
 import Reviews from "@/components/Reviews";
+import NextImage from "next/image";
 
 export default function Home() {
   return (
@@ -62,30 +63,45 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex justify-center -space-x-3 select-none pt-10">
-                <img
-                  src="customer1.png"
+                <NextImage
+                  src="/customer1.png"
                   className="relative rounded-full size-14 ring-2 ring-slate-100
                 object-cover"
+                  alt="customer 1"
+                  width={56}
+                  height={56}
                 />
-                <img
-                  src="customer2.png"
+                <NextImage
+                  src="/customer2.png"
                   className="relative rounded-full size-14 ring-2 ring-slate-100
                 object-cover"
+                  alt="customer 2"
+                  width={56}
+                  height={56}
                 />
-                <img
-                  src="customer3.png"
+                <NextImage
+                  src="/customer3.png"
                   className="relative rounded-full size-14 ring-2 ring-slate-100
                 object-cover"
+                  alt="customer 3"
+                  width={56}
+                  height={56}
                 />
-                <img
-                  src="customer4.png"
+                <NextImage
+                  src="/customer4.png"
                   className="relative rounded-full size-14 ring-2 ring-slate-100
                 object-cover"
+                  alt="customer 4"
+                  width={56}
+                  height={56}
                 />
-                <img
-                  src="happy4.jpg"
+                <NextImage
+                  src="/happy4.jpg"
                   className="relative rounded-full size-14 ring-2 ring-slate-100
                 object-cover"
+                  alt="customer 5"
+                  width={56}
+                  height={56}
                 />
               </div>
               <div className="pt-5 flex flex-col items-center">
@@ -109,18 +125,24 @@ export default function Home() {
         >
           <div className="flex flex-col items-center justify-center md:flex-row md:gap-4">
             <Heading className="order-2">What our Customers think?</Heading>
-            <img
-              src="butterfly.png"
+            <NextImage
+              src="/butterfly.png"
               className="bg-inherit size-44 order-1 md:order-3"
+              alt="butterfly"
+              width={176}
+              height={176}
             />
           </div>
           <div className="flex flex-col pt-16 gap-10 lg:flex-row">
             <div className="flex flex-col items-start gap-2">
               <div className="flex items-center gap-3">
-                <img
-                  src="customer3.png"
+                <NextImage
+                  src="/customer3.png"
                   className="relative rounded-full size-14 ring-2 ring-slate-100
                 object-cover"
+                  alt="customer Laura"
+                  width={56}
+                  height={56}
                 />
                 <div className="flex flex-col items-start">
                   <p className="font-semibold text-lg">Laura</p>
@@ -143,10 +165,13 @@ export default function Home() {
             </div>
             <div className="flex flex-col items-start gap-2">
               <div className="flex items-center gap-3">
-                <img
-                  src="happy4.jpg"
+                <NextImage
+                  src="/happy4.jpg"
                   className="relative rounded-full size-14 ring-2 ring-slate-100
                 object-cover"
+                  alt="customer Peter"
+                  width={56}
+                  height={56}
                 />
                 <div className="flex flex-col items-start">
                   <p className="font-semibold text-lg">Peter</p>
@@ -188,10 +213,19 @@ export default function Home() {
             now
           </Heading>
           <div className="flex flex-col items-center pt-20 lg:flex-row justify-center transition-all w-full h-fit gap-16 lg:gap-1">
-            <img src="girl1-blue.jpeg" className=" rounded max-w-96" />
-            <img
-              src="arrow.png"
+            <NextImage
+              src="/girl1-blue.jpeg"
+              className=" rounded max-w-96"
+              alt="girl with a phone case"
+              width={384}
+              height={288}
+            />
+            <NextImage
+              src="/arrow.png"
               className="rotate-90 lg:rotate-0 transition-all"
+              alt="arrow"
+              width={40}
+              height={40}
             />
             <Phone className="w-64" imgScr="/girl1-blue.jpeg" />
           </div>

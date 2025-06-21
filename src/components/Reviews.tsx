@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import { useInView } from "framer-motion";
 import Phone from "./Phone";
+import Image from "next/image";
 
 const PHONES = [
   "/previews/preview1.png",
@@ -123,9 +124,13 @@ const Reviews = () => {
   return (
     <MaxWidthWrapper className="relative">
       <ReviewGrid />
-      <img
+      <Image
         src="/OurProducts.png"
         className="absolute w-56 top-1/3 hidden lg:block -right-36"
+        alt="Our Products"
+        width={224}
+        height={224}
+        aria-hidden="true"
       />
     </MaxWidthWrapper>
   );
