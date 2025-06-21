@@ -21,16 +21,15 @@ const page = () => {
     retryDelay: 500,
   });
 
-  useEffect(() => {
-    if (data?.success) {
-      if (configId) {
-        localStorage.removeItem("configurationId");
-        router.push(`/configure/preview?id=${configId}`);
-      } else {
-        router.push("/");
-      }
+  if (data?.success) {
+    if (configId) {
+      localStorage.removeItem("configurationId");
+      router.push(`/configure/preview?id=${configId}`);
+    } else {
+      router.push("/");
     }
-  }, [configId, data]);
+  }
+
   return (
     <Loader
       title="Logging you in..."
