@@ -1,23 +1,24 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { Loader2 } from "lucide-react";
 import { handleUser } from "./action";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Loader from "@/components/Loader";
 
 const page = () => {
   const [configId, setConfigId] = useState<string | null>(null);
   const router = useRouter();
   useEffect(() => {
     const id = localStorage.getItem("configurationId");
-    console.log(id);
     if (id) setConfigId(id);
   }, []);
 
   const { data } = useQuery({
     queryKey: ["auth-callback"],
     queryFn: async () => await handleUser(),
+    retry: 5,
+    retryDelay: 500,
   });
 
   useEffect(() => {
@@ -29,16 +30,12 @@ const page = () => {
         router.push("/");
       }
     }
-  }, [configId]);
-
+  }, [configId, data]);
   return (
-    <div className="w-full mt-24 flex justify-center">
-      <div className="flex flex-col items-center gap-2">
-        <Loader2 className="h-8 w-8 animate-spin text-zinc-500" />
-        <h3 className="font-semibold text-xl">Logging you in...</h3>
-        <p>You will be redirected automatically.</p>
-      </div>
-    </div>
+    <Loader
+      title="Logging you in..."
+      massage="You will be redirected automatically."
+    />
   );
 };
 export default page;

@@ -7,7 +7,9 @@ export async function handleUser() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
-  if (!user?.id || !user?.email) throw new Error("invalid user data");
+  if (!user?.id || !user?.email) {
+    throw new Error("invalid user data");
+  }
 
   const existingUser = await prisma.user.findFirst({
     where: { id: user.id },
@@ -21,6 +23,8 @@ export async function handleUser() {
       },
     });
   }
+
+  console.log("returning true");
 
   return { success: true };
 }

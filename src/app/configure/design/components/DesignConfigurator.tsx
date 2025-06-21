@@ -135,7 +135,13 @@ const DesignConfigurator = ({
     const byteArray = new Uint8Array(byteNumbers);
     return new Blob([byteArray], { type: mimeType });
   }
-  if (isPen) return <Loader />;
+  if (isPen)
+    return (
+      <Loader
+        title="Createing your case..."
+        massage="Redirecting you to preview page..."
+      />
+    );
   return (
     <div className="relative grid grid-cols-1 lg:grid-cols-3 gap-6 my-20">
       <div
