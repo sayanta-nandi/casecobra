@@ -18,8 +18,6 @@ const page = () => {
   const { data } = useQuery({
     queryKey: ["auth-callback"],
     queryFn: async () => await handleUser(),
-    retry: true,
-    retryDelay: 500,
   });
 
   useEffect(() => {
