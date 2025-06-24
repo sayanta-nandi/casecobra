@@ -12,7 +12,7 @@ const page = () => {
   const { data } = useQuery({
     queryKey: ["auth-callback"],
     queryFn: async () => await handleUser(),
-    retry: 5,
+    retry: true,
     retryDelay: 500,
   });
 

@@ -1,10 +1,13 @@
 import { Suspense } from "react";
 import ThankYou from "./ThankYou";
+import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 
 const Page = () => {
   return (
     <Suspense>
-      <ThankYou />
+      <MaxWidthWrapper>
+        <ThankYou />
+      </MaxWidthWrapper>
     </Suspense>
   );
 };

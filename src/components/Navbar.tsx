@@ -42,6 +42,11 @@ const Navbar = () => {
                   </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
+                  <Link href="/order">
+                    <DropdownMenuItem className="cursor-pointer">
+                      Your orders
+                    </DropdownMenuItem>
+                  </Link>
                   <LogoutLink>
                     <DropdownMenuItem className="cursor-pointer">
                       Logout
