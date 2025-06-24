@@ -1,4 +1,12 @@
-const page = () => {
-  return <div>page</div>;
+import { Suspense } from "react";
+import ThankYou from "./ThankYou";
+
+const Page = () => {
+  return (
+    <Suspense>
+      <ThankYou />
+    </Suspense>
+  );
 };
-export default page;
+
+export default Page;
