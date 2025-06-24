@@ -16,23 +16,12 @@ const Phone = ({ imgScr, dark = false, className, ...props }: PhonePropes) => {
       )}
       {...props}
     >
-      <Image
-        src={
-          dark
-            ? "/phone-template-dark-edges.png"
-            : "/phone-template-white-edges.png"
-        }
+      <img
+        src="/phone-template-white-edges.png"
         className="object-fill pointer-events-none z-20 select-none"
-        alt="phone template"
-        fill
       />
       <div className="absolute -z-10 inset-0">
-        <Image
-          className="h-full object-cover"
-          src={imgScr}
-          alt="phone image"
-          fill
-        />
+        <img className="h-full object-cover" src={imgScr} />
       </div>
     </div>
   );
