@@ -57,6 +57,9 @@ const Steps = () => {
                 )}
                 aria-hidden="true"
               >
+                {/* <span className={cn(i !== 0 ? "" : "")}>
+                  <img />
+                </span> */}
                 <span className="flex flex-col">
                   <span
                     className={cn("font-semibold", {
