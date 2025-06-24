@@ -76,7 +76,11 @@ const SummaryDesign = ({ config }: { config: Configarator }) => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         <div className="flex flex-col md:row-span-3 col-span-1 p-4 sm:col-span-2 justify-center items-center md:col-span-1 space-y-4">
-          <Phone imgScr={config.croppedImageUrl!} className={`w-64 bg-${tw}`} />
+          <Phone
+            imgScr={config.croppedImageUrl!}
+            width={64}
+            className={`bg-${tw}`}
+          />
         </div>
         <div className="flex flex-col items-center col-span-1 sm:col-span-2">
           <p className="text-lg font-semibold">your {modelLabel} case</p>

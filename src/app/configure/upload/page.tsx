@@ -23,11 +23,8 @@ export default function Page() {
       });
     },
     onUploadError: () => {},
-    onUploadBegin: () => {
-      console.log("Upload started");
-    },
+    onUploadBegin: () => {},
     onUploadProgress: (p) => {
-      console.log("Upload progress:", p);
       setProgress(p);
     },
   });
@@ -37,7 +34,6 @@ export default function Page() {
       configId: undefined,
     });
     setIsDragOver(false);
-    console.log("Files accepted");
   };
 
   const onDropRejected = (rejectedFiles: FileRejection[]) => {
@@ -46,7 +42,6 @@ export default function Page() {
     toast.error(
       "Please ensure the file is a valid image format (PNG, JPG, JPEG)."
     );
-    console.log("Files were rejected");
   };
 
   return (

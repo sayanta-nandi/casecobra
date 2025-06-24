@@ -45,7 +45,6 @@ const DesignConfigurator = ({
   const { mutate: saveConfig, isPending } = useMutation({
     mutationKey: ["save-config"],
     mutationFn: async (props: saveConfigProps) => {
-      console.log(props);
       await Promise.all([saveConfiguration(), _saveConfig(props)]);
     },
     onError: () => {
