@@ -39,9 +39,6 @@ export const ourFileRouter = {
 
       const imgMetadata = await sharp(buffer).metadata();
 
-      console.log("imgMetadata", imgMetadata);
-      console.log("file url", file.url);
-
       const { width, height } = imgMetadata;
 
       if (!configId) {

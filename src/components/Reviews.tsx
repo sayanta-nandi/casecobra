@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import { useInView } from "framer-motion";
 import Phone from "./Phone";
+import Image from "next/image";
 
 const PHONES = [
   "/previews/preview1.png",
@@ -64,12 +65,16 @@ const ReviewCol = ({
     >
       {phones.concat(phones).map((phone, idx) => (
         <div
+          style={{
+            width: 76 * 4 + "px",
+            height: ((64 * 1831) / 896 + 12) * 4 + "px",
+          }}
           key={idx}
-          className={`animate-fade-in opacity-0 rounded-[2.25rem] bg-white p-6 shadow-xl shadow-slate-900/5 ${
+          className={`animate-fade-in opacity-0 rounded-[2.25rem] bg-white flex justify-center items-center shadow-xl shadow-slate-900/5 ${
             reviewClassName ? reviewClassName(idx % phones.length) : ""
           }`}
         >
-          <Phone imgScr={phone} />
+          <Phone width={64} imgScr={phone} />
         </div>
       ))}
     </div>
@@ -85,7 +90,7 @@ const ReviewGrid = () => {
   const column3 = splitColumns(columns[2], 2);
 
   return (
-    <div className="relative" ref={animatedRef}>
+    <div className="relative flex flex-col items-center" ref={animatedRef}>
       {isInView && (
         <div className="grid grid-cols-1 max-h-[125vh] overflow-hidden md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 lg:px-16">
           <ReviewCol
@@ -123,7 +128,10 @@ const Reviews = () => {
   return (
     <MaxWidthWrapper className="relative">
       <ReviewGrid />
-      <img
+      <Image
+        width={56 * 4}
+        height={(56 * 4 * 720) / 870}
+        alt=""
         src="/OurProducts.png"
         className="absolute w-56 top-1/3 hidden lg:block -right-36"
       />

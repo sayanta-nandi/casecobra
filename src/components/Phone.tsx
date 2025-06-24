@@ -5,23 +5,36 @@ import { HTMLAttributes } from "react";
 interface PhonePropes extends HTMLAttributes<HTMLDivElement> {
   imgScr: string;
   dark?: boolean;
+  width: number;
 }
 
-const Phone = ({ imgScr, dark = false, className, ...props }: PhonePropes) => {
+const Phone = ({
+  imgScr,
+  dark = false,
+  width,
+  className,
+  ...props
+}: PhonePropes) => {
   return (
     <div
+      style={{
+        width: width * 4 + "px",
+        height: (width * 4 * 1831) / 896 + "px",
+      }}
       className={cn(
         "rounded-[39px] relative pointer-events-none z-20 overflow-hidden",
         className
       )}
       {...props}
     >
-      <img
+      <Image
+        fill
+        alt=""
         src="/phone-template-white-edges.png"
         className="object-fill pointer-events-none z-20 select-none"
       />
       <div className="absolute -z-10 inset-0">
-        <img className="h-full object-cover" src={imgScr} />
+        <Image fill className="h-full object-cover" alt="" src={imgScr} />
       </div>
     </div>
   );

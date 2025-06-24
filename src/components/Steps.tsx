@@ -23,7 +23,6 @@ const STEPS = [
 
 const Steps = () => {
   const pathname = usePathname();
-  console.log("Current pathname:", pathname);
   return (
     <ol className="flex flex-col sm:flex-row justify-center">
       {STEPS.map((step, i) => {

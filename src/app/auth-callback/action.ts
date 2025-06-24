@@ -24,7 +24,5 @@ export async function handleUser() {
     });
   }
 
-  console.log("returning true");
-
   return { success: true };
 }
