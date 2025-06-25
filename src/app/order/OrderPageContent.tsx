@@ -5,6 +5,7 @@ import { getOrders } from "./action";
 import Phone from "@/components/Phone";
 import { formatPrice } from "@/lib/utils";
 import {
+  COLORS,
   FINISHES,
   MATERIALS,
   MODELS,
@@ -41,6 +42,9 @@ const OrderPageContent = () => {
         const status = STATUSES.find(
           (option) => option.value === order.status
         )?.label;
+        const tw = COLORS.find(
+          (option) => option.value === order.configurator.color
+        )?.tw;
         return (
           <div
             key={order.id}
@@ -53,7 +57,11 @@ const OrderPageContent = () => {
             }`}
           >
             <div className="flex items-center justify-center col-span-1 row-span-2">
-              <Phone imgScr={order.configurator.croppedImageUrl!} width={32} />
+              <Phone
+                imgScr={order.configurator.croppedImageUrl!}
+                width={32}
+                className={`bg-${tw}`}
+              />
             </div>
             <div className="col-span-2">
               <p className="font-semibold text-lg">{model}</p>
