@@ -20,9 +20,10 @@ const Phone = ({
       style={{
         width: width * 4 + "px",
         height: (width * 4 * 1831) / 896 + "px",
+        borderRadius: (width * 39) / 64 + "px",
       }}
       className={cn(
-        "rounded-[39px] relative pointer-events-none z-20 overflow-hidden",
+        "relative pointer-events-none z-20 overflow-hidden",
         className
       )}
       {...props}

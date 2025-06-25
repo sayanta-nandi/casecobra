@@ -2,6 +2,7 @@
 // bg-zinc-900 border-zinc-900
 // bg-rose-950 border-rose-950
 
+import { Label } from "@radix-ui/react-dropdown-menu";
 import { PRODUCT_PRICES } from "./product-price-validator";
 
 export const COLORS = [
@@ -79,3 +80,18 @@ export const FINISHES = {
     },
   ],
 } as const;
+
+export const STATUSES = [
+  {
+    label: "Already Delivered",
+    value: "fulfilled",
+  },
+  {
+    label: "Shipped, Waiting for Delivery",
+    value: "shipped",
+  },
+  {
+    label: "Waiting for Shipment",
+    value: "awaiting_shipment",
+  },
+] as const;
