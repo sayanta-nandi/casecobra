@@ -57,7 +57,7 @@ export async function POST(req: Request) {
           },
           billing_address: {
             create: {
-              name: session.customer_details?.email!,
+              name: session.customer_details?.name!,
               city: billingAddress?.city!,
               country: billingAddress?.country!,
               postalCode: billingAddress?.postal_code!,

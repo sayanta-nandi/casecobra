@@ -1,25 +1,24 @@
-"use client";
-
 import {
-  RegisterLink,
   LoginLink,
   LogoutLink,
-  CreateOrgLink,
+  RegisterLink,
 } from "@kinde-oss/kinde-auth-nextjs/components";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import { Button, buttonVariants } from "./ui/button";
-import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
-import Image from "next/image";
 import {
   DropdownMenu,
-  DropdownMenuItem,
   DropdownMenuContent,
+  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-const Navbar = () => {
-  const { user } = useKindeBrowserClient();
+const Navbar = async () => {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+  const isAdmin = user?.email === process.env.ADMIN_EMAIL;
 
   return (
     <nav className="sticky z-50 h-14 inset-x-0 top-0 w-full border-b border-gray-200 bg-white/60 backdrop-blur-md transition-all">
@@ -42,6 +41,13 @@ const Navbar = () => {
                   </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
+                  {isAdmin && (
+                    <Link href="/dashboard">
+                      <DropdownMenuItem className="cursor-pointer">
+                        Dashboard
+                      </DropdownMenuItem>
+                    </Link>
+                  )}
                   <Link href="/order">
                     <DropdownMenuItem className="cursor-pointer">
                       Your orders
