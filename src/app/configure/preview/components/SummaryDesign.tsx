@@ -39,7 +39,7 @@ const SummaryDesign = ({ config }: { config: Configarator }) => {
     totalPrice += PRODUCT_PRICES.material.polycarbonate;
   if (finish === "textured") totalPrice += PRODUCT_PRICES.finish.textured;
 
-  const { mutate: createPaymentSession } = useMutation({
+  const { mutate: createPaymentSession, isPending } = useMutation({
     mutationKey: ["get-checkout-session"],
     mutationFn: createCheckoutSession,
     onSuccess: ({ url }) => {
@@ -132,7 +132,7 @@ const SummaryDesign = ({ config }: { config: Configarator }) => {
             </div>
           </div>
           <div className="pt-4 flex w-full justify-end">
-            <Button onClick={() => handleCheckout()}>
+            <Button isLoading={isPending} onClick={() => handleCheckout()}>
               Checkout <ArrowRight />
             </Button>
           </div>
