@@ -132,7 +132,11 @@ const SummaryDesign = ({ config }: { config: Configarator }) => {
             </div>
           </div>
           <div className="pt-4 flex w-full justify-end">
-            <Button isLoading={isPending} onClick={() => handleCheckout()}>
+            <Button
+              isLoading={isPending}
+              disabled={isPending}
+              onClick={() => handleCheckout()}
+            >
               Checkout <ArrowRight />
             </Button>
           </div>
